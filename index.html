@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>RadStore</title>
+		<meta charset=utf-8 />
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link type="text/css" rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="https://use.typekit.net/wwq8xuo.css">
+	</head>
+	<body>
+		<div id="container"></div>
+
+		<video
+		 id="video"
+		 playsinline
+		 webkit-playsinline
+		 loop
+		 muted
+		 autoplay
+		 width="1920"
+		 height="1080"
+		 src="./videos/video.MOV"
+		 style="display: none;"
+		></video>
+
+		<div id="startPopUp">
+			<div id="welcome">WELCOME TO THE RADSTORE</div>
+				<div id="startContent">
+					<div id="controls">
+
+						<div class = "controlsRow" id="controlsRow1">
+							<div id="wasdContainer">
+								<div id="wasdImageContainer">
+									<img src="images/W.png" alt="" class="keyImage">
+									<img src="images/A.png" alt="" class="keyImage">
+									<img src="images/S.png" alt="" class="keyImage">
+									<img src="images/D.png" alt="" class="keyImage">
+								</div>
+								<div class="controlLabel">
+									To move</div>
+								</div>
+							<div id="eContainer">
+								<div id="eImageContainer">
+									<img src="images/E.png" alt="" class="keyImage">
+								</div>
+								<div class="controlLabel">To view cart</div>
+							</div>
+						</div>
+
+						<div class = "controlsRow" id="controlsRow2">
+							<div class="row2Container">
+								<div class="row2ImageContainer">
+									<img src="images/look.png" alt="" class="row2Image">
+								</div>
+								<div class="controlLabel">
+									To look
+								</div>
+							</div>
+							<div class="row2Container">
+								<div class="row2ImageContainer">
+									<img src="images/interact.png" alt="" class="row2Image">
+								</div>
+								<div class="controlLabel">
+									To interact
+								</div>
+							</div>
+						</div>
+
+						<div class="controlsRow" id="controlsRow3">
+							<div class="row3ImageContainer">
+								<img src="images/P.png" alt="" class="row3Image">
+							</div>
+							<div class="controlLabel">
+								pause
+							</div>
+						</div>
+					</div>
+					<div id="loading">
+						<div id="loadingImageContainer">
+							<img src="../images/loadingscreen.gif" id="loadingImage">
+							<div id="loadingText">Loading... 0%</div>
+							<div id="loadingText1">0 0f 0 files</div>
+							<div id="startButtonContainer">
+								<button id="startButton">Start</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+
+		<div id="HUDOverlayBottom">
+			<div id="move" class="HUDBottomElement">
+				<img class = "HUDKeys" id = "wHUD" src="images/W.png">
+				<img class = "HUDKeys" id = "aHUD" src="images/A.png">
+				<img class = "HUDKeys" id = "sHUD" src="images/S.png">
+				<img class = "HUDKeys" id = "dHUD" src="images/D.png">
+				<div class = "HUDText">Move</div>
+			</div>
+
+			<div id="mouse" class="HUDBottomElement">
+				<img class = "HUDKeys" id = "lookHUD" src="images/look.png">
+				<div class = "HUDText">Look</div>
+				<img class = "HUDKeys" id = "interactHUD" src="images/interact.png">
+				<div class = "HUDText" id = "interactObject">Interact</div>
+			</div>
+
+			<div id="pause" class="HUDBottomElement">
+				<img class = "HUDKeys" id = "pHUD" src="images/P.png">
+				<div class = "HUDText">Pause</div>
+			</div>
+		</div>
+
+		<div id="HUDOverlayTop">
+			<div id="pause" class="HUDBottomElement">
+				<img class = "HUDKeys" id = "eHUD" src="images/E.png">
+				<div class = "HUDText">Cart</div>
+				<div class = "HUDText" id="CartItems">0</div>
+			</div>
+		</div>
+
+
+		<div id="classicPopUp" class="productPopUp">
+			<div class="ppImageCont">
+				<img src="./images/sixInch.jpg" class="ppImage">
+			</div>
+
+			<div class="ppContent">
+				<div class="ppTitle">Classic 6.5"</div>
+				<div class="ppdPrice">₹16,999</div>
+				<div class="ppPrice">₹22,000</div>
+
+				<button id="classicBuy" class="ppButton">Add to Cart</button>
+			</div>
+			<div id="ppClose">
+				<button class="closeProductPopUp"></button>
+			</div>
+		</div>
+
+		<div id="roverPopUp" class="productPopUp">
+			<div class="ppImageCont">
+				<img src="./images/eightInch.jpg" class="ppImage">
+			</div>
+
+			<div class="ppContent">
+				<div class="ppTitle">Rover Off-Roader</div>
+				<div class="ppdPrice">₹24,999</div>
+				<div class="ppPrice">₹32,000</div>
+
+				<button id="classicBuy" class="ppButton">Add to Cart</button>
+			</div>
+			<div id="ppClose">
+				<button class="closeProductPopUp"></button>
+				
+			</div>
+		</div>
+
+		<div id="shockwavePopUp" class="productPopUp">
+			<div class="ppImageCont">
+				<img src="./images/v1.jpg" class="ppImage">
+			</div>
+
+			<div class="ppContent">
+				<div class="ppTitle">Shockwave V1</div>
+				<div class="ppdPrice">₹36,000</div>
+				<div class="ppPrice">₹45,000</div>
+
+				<button id="classicBuy" class="ppButton">Add to Cart</button>
+			</div>
+			<div id="ppClose">
+				<button class="closeProductPopUp"></button>
+			</div>
+		</div>
+		<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+		<script type="importmap">
+		{
+			"imports": {
+			"three": "https://unpkg.com/three@0.146.0/build/three.module.js"
+			}
+		}
+		</script>
+
+		<script type="module">
+
+// #region HUD Initialization
+
+			let startPopUp = $("#startPopUp");
+			let startButton = $("#startButton");
+			let loadingText = $("#loadingText");
+			let loadingText1 = $("#loadingText1");
+
+			let wHUD = $("#wHUD");
+			let aHUD = $("#aHUD");
+			let sHUD = $("#sHUD");
+			let dHUD = $("#dHUD");
+			let lookHUD = $("#lookHUD");
+			let interactHUD = $("#interactHUD");
+			let interactObject = $("#interactObject");
+
+
+			let roverPopUp = $("#roverPopUp");
+			let pp1 = false;
+			let classicPopUp = $("#classicPopUp");
+			let pp2 = false;
+			let shockwavePopUp = $("#shockwavePopUp");
+			let pp3 = false;
+			let closeProductPopUp = $(".closeProductPopUp");
+			
+
+			function toggleHUD(){
+				if (startPopUp.css("display") == "none"){
+					$("#HUDOverlayTop").css("display", "flex");
+					$("#HUDOverlayBottom").css("display", "flex");
+				} else {
+					$("#HUDOverlayTop").css("display", "none");
+					$("#HUDOverlayBottom").css("display", "none");
+				}
+			}
+
+			toggleHUD();
+
+// #endregion
+
+// #region Scene Setup
+			import * as THREE from 'three';
+
+			import {GLTFLoader} from 'https://unpkg.com/three@0.146.0/examples/jsm/loaders/GLTFLoader.js';
+
+			import { Octree } from 'https://unpkg.com/three@0.146.0/examples/jsm/math/Octree.js';
+			
+			import { Capsule } from 'https://unpkg.com/three@0.146.0/examples/jsm/math/Capsule.js';
+
+			import { MeshSurfaceSampler } from 'https://unpkg.com/three@0.146.0/examples/jsm/math/MeshSurfaceSampler.js'
+
+			const clock = new THREE.Clock();
+
+			const scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0x88ccee );
+			scene.fog = new THREE.Fog( 0x88ccee, 0, 50 );
+
+			const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			camera.rotation.order = 'YXZ';
+            camera.lookAt ( -900, 0, 1000);
+		
+			const light = new THREE.AmbientLight( 0xffffff, 1 ); // soft white light
+			scene.add( light );
+
+			const container = document.getElementById( 'container' );
+
+			const renderer = new THREE.WebGLRenderer( { antialias: true } );
+			renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.outputEncoding = THREE.sRGBEncoding;
+			renderer.toneMapping = THREE.ACESFilmicToneMapping;
+			container.appendChild( renderer.domElement );
+
+			const GRAVITY = 30;
+
+			const STEPS_PER_FRAME = 1;
+
+			const worldOctree = new Octree();
+
+			const playerCollider = new Capsule( new THREE.Vector3( 3, 0.35, -2.5 ), new THREE.Vector3( 3, 1, -2.5 ), 0.75 );
+
+			const playerVelocity = new THREE.Vector3();
+			const playerDirection = new THREE.Vector3();
+
+			let playerOnFloor = false;
+			let mouseTime = 0;
+//#endregion
+
+// #region Loading Manager
+			let loaded = false
+
+			const manager = new THREE.LoadingManager();
+
+			manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+				loadingText1.text(String(itemsLoaded) + " of " + String(itemsTotal) + " files loaded");
+			};
+
+			manager.onLoad = function ( ) {
+				loaded = true;
+				startButton.css("transfrom", "translate(-5px, -5px)");
+				startButton.css("box-shadow", "5px 5px black");
+				startButton.css("color", "white");
+				startButton.css("border", "0.75vh solid white");
+			};
+
+
+			manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+				let percent = String(Math.floor((itemsLoaded/itemsTotal)*100))+"%";
+				loadingText.text("Loading... " + percent);
+				loadingText1.text(String(itemsLoaded) + " of " + String(itemsTotal) + " files loaded");
+			};
+
+			manager.onError = function ( url ) {
+				console.log( 'There was an error loading ' + url );
+			};
+// #endregion
+
+// #region Movement Functions
+			function playerCollisions() {
+
+				const result = worldOctree.capsuleIntersect( playerCollider );
+
+				playerOnFloor = false;
+
+				if ( result ) {
+
+					playerOnFloor = result.normal.y > 0;
+
+					if ( ! playerOnFloor ) {
+
+						playerVelocity.addScaledVector( result.normal, - result.normal.dot( playerVelocity ) );
+
+					}
+
+					playerCollider.translate( result.normal.multiplyScalar( result.depth ) );
+
+				}
+
+			}
+
+			function updatePlayer( deltaTime ) {
+
+				let damping = Math.exp( - 4 * deltaTime ) - 1;
+
+				if ( ! playerOnFloor ) {
+
+					playerVelocity.y -= GRAVITY * deltaTime;
+					damping *= 0.1;
+
+				}
+
+				playerVelocity.addScaledVector( playerVelocity, damping );
+
+				const deltaPosition = playerVelocity.clone().multiplyScalar( deltaTime / 1.5);
+				playerCollider.translate( deltaPosition );
+
+				playerCollisions();
+
+				camera.position.copy( playerCollider.end );
+
+			}
+
+
+			function getForwardVector() {
+
+				camera.getWorldDirection( playerDirection );
+				playerDirection.y = 0;
+				playerDirection.normalize();
+
+				return playerDirection;
+
+			}
+
+			function getSideVector() {
+
+				camera.getWorldDirection( playerDirection );
+				playerDirection.y = 0;
+				playerDirection.normalize();
+				playerDirection.cross( camera.up );
+
+				return playerDirection;
+
+			}
+
+			function controls( deltaTime ) {
+
+				const speedDelta = deltaTime * ( playerOnFloor ? 25 : 8 );
+
+				if ( keyStates[ 'KeyW' ] ) {
+
+					playerVelocity.add( getForwardVector().multiplyScalar( speedDelta ) );
+					wHUD.css("opacity", "1");
+
+				} else {
+					wHUD.css("opacity", "0.5");
+				}
+
+				if ( keyStates[ 'KeyS' ] ) {
+
+					playerVelocity.add( getForwardVector().multiplyScalar( - speedDelta ) );
+					sHUD.css("opacity", "1");
+				} else {
+					sHUD.css("opacity", "0.5");
+				}
+
+				if ( keyStates[ 'KeyA' ] ) {
+
+					playerVelocity.add( getSideVector().multiplyScalar( - speedDelta ) );
+					aHUD.css("opacity", "1");
+				} else {
+					aHUD.css("opacity", "0.5");
+				}
+
+				if ( keyStates[ 'KeyD' ] ) {
+
+					playerVelocity.add( getSideVector().multiplyScalar( speedDelta ) );
+					dHUD.css("opacity", "1");
+				} else {
+					dHUD.css("opacity", "0.5");
+				} 
+
+				if ( keyStates[ 'KeyP' ] ) {
+					if($(".productPopUp").css("display") == "none"){
+						startPopUp.css("display", "inline-block");
+						startButton.text("Resume");
+						document.exitPointerLock();
+						toggleHUD();
+					}
+				}
+			}
+
+			function teleportPlayerIfOob() {
+
+				if ( camera.position.y <= - 5 ) {
+
+					playerCollider.start.set( 3, 0.35, -2.5 );
+					playerCollider.end.set( 3, 1, -2.5);
+					playerCollider.radius = 0.35;
+					camera.position.copy( playerCollider.end );
+					camera.rotation.set( 0, 0, 0 );
+					camera.lookAt ( -850, 0, 1000);
+
+				}
+			}
+// #endregion
+
+// #region Models & Textures
+			
+			const loader = new GLTFLoader(manager).setPath( './models/' );
+
+			loader.load( 'Final_floor.gltf', ( gltf ) => {
+				scene.add( gltf.scene );
+				worldOctree.fromGraphNode( gltf.scene );
+
+			});
+
+			loader.load( 'Final_objects.gltf', ( gltf ) => {
+				scene.add( gltf.scene );
+			});
+		
+			let sampler
+			let uniforms = { mousePos: {value: new THREE.Vector3()}}
+			let pointsGeometry = new THREE.BufferGeometry()
+			const cursor = {x:0, y:0}
+			const vertices = []
+			const tempPosition = new THREE.Vector3();
+			const pointContainer = new THREE.Object3D();
+			let points;
+
+			function transformMesh(){
+				// Loop to sample a coordinate for each points
+				for (let i = 0; i < 5000; i ++) {
+					// Sample a random position in the model
+					sampler.sample(tempPosition)
+					// Push the coordinates of the sampled coordinates into the array
+					vertices.push(tempPosition.x, tempPosition.y, tempPosition.z)
+				}
+				
+				// Define all points positions from the previously created array
+				pointsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3))
+
+				// Define the matrial of the points
+				const pointsMaterial = new THREE.PointsMaterial({
+					color: 0xee3936,
+					size: 0.07,
+					blending: THREE.AdditiveBlending,
+					transparent: true,
+					opacity: 0.8,
+					depthWrite: false,
+					sizeAttenuation: true,
+					alphaMap: new THREE.TextureLoader().load('./images/particleTexture.jpg')
+				})
+				points = new THREE.Points(pointsGeometry, pointsMaterial);
+				
+
+				// Add them into the main group
+				scene.add(pointContainer);
+				pointContainer.add(points);
+				points.position.set(0, 1, 0);
+				points.scale.set(0.1, 0.1, 0.1);
+				points.rotation.z = Math.PI/4;
+
+			}
+
+			loader.load( 'holo1.glb', ( gltf ) => {
+				gltf.scene.traverse((obj) => {
+					if (obj.isMesh) {
+						sampler = new MeshSurfaceSampler(obj).build();
+					}
+				})
+				transformMesh();
+            });
+
+			const textureLoader = new THREE.TextureLoader(manager);
+
+			const skyTexture = textureLoader.load("./images/space2.jpg",
+				() => { 
+				const rt = new THREE.WebGLCubeRenderTarget(skyTexture.image.height);
+				rt.fromEquirectangularTexture(renderer, skyTexture);
+				scene.background = rt.texture;
+			});
+
+			let insta1 = textureLoader.load("./images/1.jpg");
+			let insta2 = textureLoader.load("./images/2.jpg");
+			let insta3 = textureLoader.load("./images/3.jpg");
+			let insta4 = textureLoader.load("./images/4.jpg");
+			let insta5 = textureLoader.load("./images/5.jpg");
+			let insta6 = textureLoader.load("./images/6.jpg");
+			let insta7 = textureLoader.load("./images/7.jpg");
+			let insta8 = textureLoader.load("./images/8.jpg");
+			let insta9 = textureLoader.load("./images/9.jpg");
+			let insta10 = textureLoader.load("./images/10.jpg");
+
+			const instaPanelGeometry = new THREE.PlaneGeometry( 3/2, 4/2);
+			const instaPanelMaterial = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide, map: insta1, transparent: true, opacity: 0.8, toneMapped: false,});
+			const instaPanel = new THREE.Mesh( instaPanelGeometry, instaPanelMaterial );
+			scene.add( instaPanel );
+			instaPanel.position.set(-4.4, 0.2, -1.05);
+			instaPanel.rotation.y = Math.PI/2.4;
+			let currentTexture = 1;
+			let togelLimit = 2;
+			let togel = 0;
+
+			function instaTexture(deltaTime){
+				togel += deltaTime;
+				if(togel > togelLimit){
+					togel = 0;
+					currentTexture += 1;
+					if (currentTexture > 10){
+						currentTexture = 1;
+					}
+					if (currentTexture == 1){
+						instaPanelMaterial.map = insta1;
+					} else if (currentTexture == 2){
+						instaPanelMaterial.map = insta2;
+					} else if (currentTexture == 3){
+						instaPanelMaterial.map = insta3;
+					} else if (currentTexture == 4){
+						instaPanelMaterial.map = insta4;
+					} else if (currentTexture == 5){
+						instaPanelMaterial.map = insta5;
+					} else if (currentTexture == 6){
+						instaPanelMaterial.map = insta6;
+					} else if (currentTexture == 7){
+						instaPanelMaterial.map = insta7;
+					} else if (currentTexture == 8){
+						instaPanelMaterial.map = insta8;
+					} else if (currentTexture == 9){
+						instaPanelMaterial.map = insta9;
+					} else if (currentTexture == 10){
+						instaPanelMaterial.map = insta10;
+					}
+				}
+			}
+
+			const video = document.getElementById("video");
+			const videoTexture = new THREE.VideoTexture(video);
+			videoTexture.minFilter = THREE.LinearFilter;
+			videoTexture.magFilter = THREE.LinearFilter;
+
+			const videoMaterial = new THREE.MeshBasicMaterial({
+				map: videoTexture,
+				side: THREE.FrontSide,
+				toneMapped: false,
+				transparent: true,
+				opacity: 0.8
+			});
+
+			let videoScale = 4.5;
+			const videoGeometry = new THREE.PlaneGeometry( 1.76*videoScale, 1*videoScale);
+			const videoDisplay = new THREE.Mesh( videoGeometry, videoMaterial);
+			videoDisplay.rotation.y = Math.PI;
+			videoDisplay.position.set(0, 2, 11.2);
+
+			scene.add(videoDisplay);
+// #endregion
+
+// #region Interaction Triggers
+			let currentDiv = 0;
+			let activateDist = 3;
+			let roverPosition = new THREE.Vector3(6.15, -0.5 , 9.2);
+			let classicPosition = new THREE.Vector3(-6.15, -0.5 , 9.2);
+			let shockwavePosition = new THREE.Vector3(0, -0.2 , 7.5);
+
+			function triggers(){
+				let cameraPos = new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z);
+
+				if(cameraPos.distanceTo(roverPosition) < activateDist){
+					currentDiv = 1;
+				}else if(cameraPos.distanceTo(classicPosition) < activateDist){
+					currentDiv = 2;
+				} else if (cameraPos.distanceTo(shockwavePosition) < activateDist){
+					currentDiv = 3;
+				} else {
+					currentDiv = 0;
+				}
+
+				if(currentDiv == 0){
+					interactHUD.css("opacity", "1")
+					interactObject.text("Interact");
+					interactHUD.css("opacity", "0.5");
+				} else if (currentDiv == 1){
+					interactObject.text("Interact: Rover XL");
+					interactHUD.css("opacity", "1");
+				} else if (currentDiv == 2){
+					interactObject.text('Interact: Classic 6.5');
+					interactHUD.css("opacity", "1");
+				}  else if (currentDiv == 3){
+					interactObject.text("Interact: Shockwave V1");
+					interactHUD.css("opacity", "1");
+				} 
+			}
+// #endregion
+
+// #region Animate
+			function animate() {
+
+				const deltaTime = Math.min( 0.05, clock.getDelta() ) / STEPS_PER_FRAME;
+
+				for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
+
+					if (loaded){
+						controls( deltaTime );
+
+						updatePlayer( deltaTime );
+
+						teleportPlayerIfOob();
+
+						triggers();
+
+						instaTexture(deltaTime);
+
+						videoTexture.needUpdate = true;
+
+						pointContainer.rotation.y += deltaTime;
+						points.rotation.x += deltaTime;
+
+					};
+				}
+
+				renderer.render( scene, camera );
+
+				requestAnimationFrame( animate );
+
+			}
+
+			animate();
+// #endregion
+
+// #region Event Listeners
+
+			const keyStates = {};
+
+			document.addEventListener( 'keydown', ( event ) => {
+
+				keyStates[ event.code ] = true;
+
+			} );
+
+			document.addEventListener( 'keyup', ( event ) => {
+
+				keyStates[ event.code ] = false;
+
+			} );
+
+			closeProductPopUp.click(function(){
+				document.body.requestPointerLock();
+				console.log("test1");
+				$(".productPopUp").css("display", "none");
+				console.log("test2");
+				setTimeout(function(){
+					pp1 = false;
+					pp2 = false;
+					pp3 = false;
+				}, 100);
+			});
+
+			document.body.addEventListener( 'click', () => {
+				if(currentDiv == 1){
+					if (roverPopUp.css("display") == "none"){
+						if (roverPopUp.css("display") == "none" && !pp1 && currentDiv == 1){
+							roverPopUp.css("display", "flex");
+							pp1 = true;
+							document.exitPointerLock();
+						}
+					}
+				}
+
+				if(currentDiv == 2){
+					if (startPopUp.css("display") == "none"){
+						if (classicPopUp.css("display") == "none" && !pp2 && currentDiv == 2){
+							classicPopUp.css("display", "flex");
+							pp2 = true;
+							document.exitPointerLock();
+						}
+					}
+				}
+
+				if(currentDiv == 3){
+					if (startPopUp.css("display") == "none"){
+						if (shockwavePopUp.css("display") == "none" && !pp3 && currentDiv == 3){
+							shockwavePopUp.css("display", "flex");
+							pp3 = true;
+							document.exitPointerLock();
+						}
+					}
+				}
+			} );
+
+			document.body.addEventListener( 'mousemove', ( event ) => {
+
+				if ( document.pointerLockElement === document.body ) {
+
+					camera.rotation.y -= event.movementX / 1000;
+					camera.rotation.x -= event.movementY / 1000;
+
+					if(event.movementX != 0 && event.movementY != 0){
+						lookHUD.css("opacity", "1");
+					} else {
+						lookHUD.css("opacity", "0.5");
+					}
+				}
+
+			} );
+
+			window.addEventListener( 'resize', onWindowResize );
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			startButton.click(function(){
+				if(loaded){
+					startPopUp.css("display", "none");
+					document.body.requestPointerLock();
+					toggleHUD();
+					video.play();
+				}
+			});
+
+			
+
+			document.onpointerlockchange = (event) => {
+				if (currentDiv == 0){
+					if (document.pointerLockElement == null){
+						startPopUp.css("display", "inline-block");
+						startButton.text("Resume");
+						toggleHUD();
+					}
+				}
+				
+				
+			};
+
+			document.onpointerlockerror = (event) => {
+				if (document.pointerLockElement == null){
+					startPopUp.css("display", "inline-block");
+					startButton.text("Resume");
+					pHUD.css("opacity", "1");
+					toggleHUD();
+				};
+			};
+// #endregion
+		</script>
+	</body>
+</html>
